@@ -20,7 +20,7 @@ class Book(db.Model):
     def __repr__(self):
         return "<Title: {}>".format(self.title)
 
-    @app.route("/", methods=["GET", "POST"])
+    @application.route("/", methods=["GET", "POST"])
     def home():
         if request.form:
          try:
@@ -34,7 +34,7 @@ class Book(db.Model):
  
         return render_template("home.html", books=books)
 
-    @app.route("/Update", methods=["POST"])
+    @application.route("/Update", methods=["POST"])
     def update():
         try:
             newtitle = request.form.get("newtitle")
@@ -48,7 +48,7 @@ class Book(db.Model):
     
         return redirect("/")
     
-    @app.route("/delete", methods=["POST"])
+    @application.route("/delete", methods=["POST"])
     def delete():
         title = request.form.get("title")
         book = Book.query.filter_by(title=title).first()
@@ -64,5 +64,5 @@ class Book(db.Model):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    application.run(debug=True)
 
