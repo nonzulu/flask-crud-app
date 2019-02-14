@@ -12,7 +12,7 @@ application = Flask (__name__)
 application.config["SQLALCHEMY_DATABASE_URI"] = database_file
 application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
-db =SQLAlchemy(app)
+db =SQLAlchemy(application)
 
 class Book(db.Model):
     title = db.Column(db.String(80), unique=True, nullable=False, primary_key=True)
